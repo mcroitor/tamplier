@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=libhtmlgen.a
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/libhtmlgen.a
+CND_ARTIFACT_NAME_Debug=libtamplier.a
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/libtamplier.a
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=htmlgen.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/htmlgen.tar
+CND_PACKAGE_NAME_Debug=tamplier.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/tamplier.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=htmlgen
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/htmlgen
+CND_ARTIFACT_NAME_Release=tamplier
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/tamplier
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=htmlgen.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/htmlgen.tar
+CND_PACKAGE_NAME_Release=tamplier.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/tamplier.tar
 #
 # include compiler specific variables
 #

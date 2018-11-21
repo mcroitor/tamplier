@@ -1,35 +1,71 @@
 #include "tamplier.h"
 
-namespace mc{
-    
-    std::string replace(std::string from, std::string to, std::string source){
-        if(from.empty()){
+namespace mc {
+
+    string replace(string from, string to, string source) {
+        if (from.empty()) {
             return source;
         }
         size_t start = 0;
         auto it = source.find(from, start);
-        while(it != std::string::npos ){
-            source = source.substr(0, it) + to + source.substr(it + from.length(), std::string::npos);
+        while (it != string::npos) {
+            source = source.substr(0, it) + to + source.substr(it + from.length(), string::npos);
             start = it + to.length();
             it = source.find(from, start);
         }
         return source;
     }
 
-    tamplier::tamplier(std::string tpl): _template(tpl) {
+    tamplier::tamplier(string tpl) : _template(tpl) {
 
     }
-    tamplier::~tamplier(){}
 
-    std::string tamplier::fill(const std::map<std::string,std::string>& rule) const{
-        std::string result = _template;
-        for(std::pair<std::string, std::string> pair: rule){
-            result = mc::replace(pair.first, pair.second, result);
+    tamplier::~tamplier() {
+    }
+
+    string tamplier::fill(const map& rule) const {
+        string result = _template;
+        for (pair p : rule) {
+            result = mc::replace(p.first, p.second, result);
         }
         return result;
     }
-    
-    std::string tamplier::get_template() const{
+
+    string tamplier::fill(const vector& rule) const {
+        string result = _template;
+        for (pair p : rule) {
+            result = mc::replace(p.first, p.second, result);
+        }
+        return result;
+    }
+
+    string tamplier::fill(const map& rule, const size_t& depth) const {
+        string result = _template;
+        // TODO#: if depth > MAX_DEPTH, throw exception
+        for (size_t count = 0; count < depth; ++count) {
+            string tmp = tamplier(result).fill(rule);
+            if (result == tmp) {
+                break;
+            }
+            result = tmp;
+        }
+        return result;
+    }
+
+    string tamplier::fill(const vector& rule, const size_t& depth) const {
+        string result = _template;
+        // TODO#: if depth > MAX_DEPTH, throw exception
+        for (size_t count = 0; count < depth; ++count) {
+            string tmp = tamplier(result).fill(rule);
+            if (result == tmp) {
+                break;
+            }
+            result = tmp;
+        }
+        return result;
+    }
+
+    string tamplier::get_template() const {
         return _template;
     }
 }
