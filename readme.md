@@ -8,7 +8,7 @@ defined rules.
 ## Example
 
 ```C++
-const std::string tpl = "<html>"
+const std::string& tpl = "<html>"
             "<head>"
             "<title><!-- title --></title>"
             "</head>"
@@ -25,7 +25,23 @@ const mc::vector& rules = {
 mc::tamplier _tamplier(tpl);
 std::string result = _tamplier.fill(rules).to_string();
 ```
+Class _tamplier_ is designed to fill template in a sequence, such in the next example:
 
+```C++
+const std::string& tpl = "<html>"
+            "<head>"
+            "<title><!-- title --></title>"
+            "</head>"
+            "<body>"
+            "<!-- body -->"
+            "</body>"
+            "</html>";
+
+mc::tamplier _tamplier(tpl);
+std::string result = _tamplier.fill({{"<!-- title -->", "this is a title"}})
+    .fill({{"<!-- body -->", "this is a body content"}})
+    .to_string();
+```
 ## Interface
 
 ```C++
