@@ -14,7 +14,6 @@
 
 namespace mc {
     using std::string;
-    using map = std::map<string, string>;
     using pair = std::pair<string, string>;
     using vector = std::vector<pair>;
     using std::size_t;
@@ -41,20 +40,16 @@ namespace mc {
          * @param 
          */
         explicit tamplier(string);
+        tamplier(const tamplier&);
+        const tamplier& operator = (const tamplier&);
         virtual ~tamplier();
+
         /**
-         * fill template by specified rules. attention! map orders values by keys
-         * alphabetically! check example!
-         * @param rules
-         * @return filled template
-         */
-        string fill(const map&) const;
-                /**
          * fill template by specified rules.
          * @param rules
          * @return filled template
          */
-        string fill(const vector&) const;
+        tamplier fill(const vector&) const;
         /**
          * fill template by specified rules. second parameter permits to apply
          * rules consecutively more then one.
@@ -62,20 +57,12 @@ namespace mc {
          * @param depth
          * @return filled template
          */
-        string fill(const map&, const size_t&) const;
+        tamplier fill(const vector&, const size_t&) const;
         /**
-         * fill template by specified rules. second parameter permits to apply
-         * rules consecutively more then one.
-         * @param rules
-         * @param depth
-         * @return filled template
+         * returns generated value
+         * @return generated string
          */
-        string fill(const vector&, const size_t&) const;
-        /**
-         * return template
-         * @return 
-         */
-        string get_template() const;
+        string to_string() const;
     };
 }
 

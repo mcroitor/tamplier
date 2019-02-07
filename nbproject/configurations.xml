@@ -38,6 +38,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>readme.md</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -81,6 +82,8 @@
           <output>${TESTDIR}/TestFiles/f2</output>
         </linkerTool>
       </folder>
+      <item path="readme.md" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tamplier.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tamplier.h" ex="false" tool="3" flavor2="0">
@@ -140,6 +143,8 @@
           <output>${TESTDIR}/TestFiles/f2</output>
         </linkerTool>
       </folder>
+      <item path="readme.md" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="tamplier.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tamplier.h" ex="false" tool="3" flavor2="0">

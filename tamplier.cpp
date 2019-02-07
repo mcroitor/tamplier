@@ -20,52 +20,43 @@ namespace mc {
 
     }
 
+    tamplier::tamplier(const tamplier& t) : _template(t._template) {
+
+    }
+
+    const tamplier& tamplier::operator=(const tamplier& t) {
+        _template = t._template;
+        return *this;
+    }
+
     tamplier::~tamplier() {
     }
 
-    string tamplier::fill(const map& rule) const {
-        string result = _template;
+    tamplier tamplier::fill(const vector& rule) const {
+        string _result = _template;
         for (pair p : rule) {
-            result = mc::replace(p.first, p.second, result);
+            _result = mc::replace(p.first, p.second, _result);
         }
-        return result;
+        return tamplier(_result);
     }
 
-    string tamplier::fill(const vector& rule) const {
-        string result = _template;
-        for (pair p : rule) {
-            result = mc::replace(p.first, p.second, result);
+    tamplier tamplier::fill(const vector& rule, const size_t& depth) const {        
+        if (depth > MAX_DEPTH_PATTERN) {
+            throw std::exception();
         }
-        return result;
-    }
-
-    string tamplier::fill(const map& rule, const size_t& depth) const {
-        string result = _template;
-        // TODO#: if depth > MAX_DEPTH, throw exception
+        string _result = _template;
         for (size_t count = 0; count < depth; ++count) {
-            string tmp = tamplier(result).fill(rule);
-            if (result == tmp) {
+            string tmp = tamplier(_result).fill(rule).to_string();
+            if (_result == tmp) {
                 break;
             }
-            result = tmp;
+            _result = tmp;
         }
-        return result;
+        return tamplier(_result);
     }
 
-    string tamplier::fill(const vector& rule, const size_t& depth) const {
-        string result = _template;
-        // TODO#: if depth > MAX_DEPTH, throw exception
-        for (size_t count = 0; count < depth; ++count) {
-            string tmp = tamplier(result).fill(rule);
-            if (result == tmp) {
-                break;
-            }
-            result = tmp;
-        }
-        return result;
-    }
 
-    string tamplier::get_template() const {
+    string tamplier::to_string() const {
         return _template;
     }
 }
